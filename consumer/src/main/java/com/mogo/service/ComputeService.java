@@ -14,9 +14,10 @@ public class ComputeService {
     @Autowired
     RestTemplate restTemplate;
 
+
     @HystrixCommand(fallbackMethod = "addServiceFallback")
     public String addService() {
-        return restTemplate.getForEntity("http://COMPUTE-SERVICE/add?a=10&b=20", String.class).getBody();
+        return restTemplate.getForEntity("http://COMPUTE-SERVICE-A/add?a=10&b=20", String.class).getBody();
     }
 
     public String addServiceFallback() {
